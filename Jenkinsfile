@@ -33,7 +33,7 @@ stage('Setup Virtual Environment') {
                 sh '''
                 bash -c "
                 source venv/bin/activate
-                pytest --cov=app --cov-report=xml
+                pytest --cov=app --cov-report=xml   ## pytest checks test cases form tests/ with refererence to code present in app/ and generate that report in xml format in jenkis
 				pytest --cov=app --cov-report=term-missing --disable-warnings
                 "
                 '''
@@ -46,8 +46,8 @@ stage('Setup Virtual Environment') {
                           sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectKey=Python-project \
                           -Dsonar.projectName=Python-project \
                           -Dsonar.exclusions=venv/** \
-                          -Dsonar.sources=. \
-                          -Dsonar.python.coverage.reportPaths=coverage.xml'''
+                          -Dsonar.sources=. \    # scan all files and folder in root dir
+                          -Dsonar.python.coverage.reportPaths=coverage.xml'''   # forward this report to sonar server for-code-coverage analysis
                 }
             }
         }
