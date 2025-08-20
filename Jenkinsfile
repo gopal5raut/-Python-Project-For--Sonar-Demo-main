@@ -9,7 +9,7 @@ pipeline {
         
         stage('Git Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'git', url: 'https://github.com/jaiswaladi246/Multi-Tier-Python-Postgres.git'
+                git branch: 'main', url: 'https://github.com/gopal5raut/-Python-Project-For--Sonar-Demo-main.git'
             }
         }
         
