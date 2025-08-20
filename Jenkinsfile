@@ -42,7 +42,7 @@ stage('Setup Virtual Environment') {
         
          stage('Sonar') {
             steps {
-                withSonarQubeEnv('sonar-server') {
+                withSonarQubeEnv('sonar') {
                           sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectKey=Python-project \
                           -Dsonar.projectName=Python-project \
                           -Dsonar.exclusions=venv/** \
